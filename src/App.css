@@ -1,0 +1,12 @@
+@import "./Css/Header.css";
+@import "./Css/Category.css";
+@import "./Css/Product.css";
+@import "./Css/AllProducts.css";
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #c5cae9;
+}
