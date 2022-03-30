@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Category from "./Category";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
@@ -18,7 +19,10 @@ export default function Header() {
   return (
     <>
       <div className='header'>
-        <h1 className='header_h1'>Shopify</h1>
+        <Link to='/' className='header_link'>
+          <h1 className='header_h1'>Shopify</h1>
+        </Link>
+
         <IconButton aria-label='cart'>
           <StyledBadge badgeContent={4} color='primary'>
             <ShoppingCartIcon
