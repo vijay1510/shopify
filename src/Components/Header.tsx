@@ -22,15 +22,17 @@ export default function Header() {
         <Link to='/' className='header_link'>
           <h1 className='header_h1'>Shopify</h1>
         </Link>
+        <Link to='/allcart'>
+          <IconButton aria-label='cart'>
+            <StyledBadge badgeContent={4} color='primary'>
+              <ShoppingCartIcon
+                style={{ color: "whitesmoke" }}
+                fontSize='large'
+              />
+            </StyledBadge>
+          </IconButton>
+        </Link>
 
-        <IconButton aria-label='cart'>
-          <StyledBadge badgeContent={4} color='primary'>
-            <ShoppingCartIcon
-              style={{ color: "whitesmoke" }}
-              fontSize='large'
-            />
-          </StyledBadge>
-        </IconButton>
         <h4>Login/Signup</h4>
       </div>
       <div>

@@ -6,7 +6,6 @@ import Product from "./Product";
 
 function AllProducts() {
   const products = useSelector((state: InitialState) => state.products);
-  console.log({ products });
 
   const dispatch = useDispatch();
 

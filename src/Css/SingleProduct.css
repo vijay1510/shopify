@@ -1,0 +1,18 @@
+.sproduct {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+
+  margin-top: 15px;
+}
+
+.sproduct_img {
+  width: 360px;
+  height: 450px;
+  margin: 0 auto;
+}
+.sproduct_button {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+}

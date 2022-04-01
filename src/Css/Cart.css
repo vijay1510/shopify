@@ -1,0 +1,17 @@
+.cart {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: space-evenly;
+}
+input {
+  width: 15px;
+}
+hr {
+  width: 50%;
+}
+img {
+  width: 82.5px;
+  height: 102px;
+}

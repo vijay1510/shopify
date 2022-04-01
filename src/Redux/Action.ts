@@ -16,7 +16,7 @@ export const getAllProducts = () => {
     try {
       const products = await fetch("https://fakestoreapi.com/products");
       const productsJson = (await products.json()) as Products[];
-      console.log({ productsJson });
+
       dispatch(allProducts(productsJson));
     } catch (error) {
       console.log(error);
@@ -32,6 +32,27 @@ export const allProducts = (data: Products[]) => {
 };
 
 //-----------------------------------------------
+
+//singleproduct
+
+export const singleproduct = (id: number) => {
+  return {
+    type: "SINGLE_PRODUCT",
+    payLoad: id,
+  };
+};
+
+//--------------------------------------------------------------------------------------
+
+//Add to cart
+
+export const addToCart = (data: Partial<Products>) => {
+  return {
+    type: "ADD_TO_CART",
+    payLoad: data,
+  };
+};
+
 //all action types
 
 type ALLPRODUCTS = {
@@ -39,4 +60,14 @@ type ALLPRODUCTS = {
   payLoad: Products[];
 };
 
-export type AllAction = ALLPRODUCTS;
+type SINGLEPRODUCT = {
+  type: "SINGLE_PRODUCT";
+  payLoad: number;
+};
+
+type ADDTOCART = {
+  type: "ADD_TO_CART";
+  payLoad: Partial<Products>;
+};
+
+export type AllAction = ALLPRODUCTS | SINGLEPRODUCT | ADDTOCART;

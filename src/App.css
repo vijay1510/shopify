@@ -2,6 +2,8 @@
 @import "./Css/Category.css";
 @import "./Css/Product.css";
 @import "./Css/AllProducts.css";
+@import "./Css/SingleProduct.css";
+@import "./Css/Cart.css";
 
 body,
 html {
