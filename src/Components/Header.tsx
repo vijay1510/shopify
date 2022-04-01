@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { InitialState } from "../Redux/Reducer";
+import { Products } from "../Redux/Action";
 import { Link } from "react-router-dom";
 import Category from "./Category";
 import Badge, { BadgeProps } from "@mui/material/Badge";
@@ -16,6 +19,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 export default function Header() {
+  const cart = useSelector((state: InitialState) => state.cart) as Products[];
   return (
     <>
       <div className='header'>
@@ -24,7 +28,7 @@ export default function Header() {
         </Link>
         <Link to='/allcart'>
           <IconButton aria-label='cart'>
-            <StyledBadge badgeContent={4} color='primary'>
+            <StyledBadge badgeContent={cart.length} color='error'>
               <ShoppingCartIcon
                 style={{ color: "whitesmoke" }}
                 fontSize='large'

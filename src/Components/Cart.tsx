@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { Products, addToCart } from "../Redux/Action";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-export default function Cart() {
+export default function Cart(props: Products) {
+  const { id, image, title, price } = props;
+  const [val, setVal] = useState(1);
+  const [total, setTotal] = useState(0);
+  console.log({ total });
+  const arr = [] as any;
+  console.log(arr);
   return (
     <>
       <div className='cart'>
         <div>
-          <img
-            src='https://rukminim2.flixcart.com/image/224/224/kthjy4w0/power-bank/n/1/l/pocket-pro-pb1022zm-mi-original-imag6tcrh2vcmgxj.jpeg?q=90'
-            alt='pic'
-          />
+          <img src={image} alt='pic' />
           <div>
-            <button>-</button>
-            <input />
-            <button>+</button>
+            <button onClick={() => (val < 1 ? 1 : setVal(val - 1))}>-</button>
+            <input value={val} />
+            <button onClick={() => setVal(val + 1)}>+</button>
           </div>
         </div>
 
-        <div>
-          <h4>Flipkart SmartBuy 10000 mAh Power Bank (22.5 W)</h4>
-          <h6>200</h6>
+        <div className='cart_details'>
+          <h4>{title}</h4>
+          <h4 className='cart_price'>
+            ${price} * {val}
+            <span className='cart_arrow'>
+              <ArrowForwardIcon fontSize='small' />
+            </span>
+            {Math.round(price * val)}
+          </h4>
         </div>
       </div>
     </>

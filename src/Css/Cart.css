@@ -2,16 +2,24 @@
   display: flex;
   max-width: 500px;
   margin: 0 auto;
-  text-align: center;
-  justify-content: space-evenly;
+  margin-bottom: 15px;
 }
 input {
-  width: 15px;
+  width: 18px;
 }
-hr {
-  width: 50%;
-}
+
 img {
   width: 82.5px;
   height: 102px;
+}
+.cart_details {
+  margin-left: 20px;
+}
+
+.cart_arrow {
+  position: relative;
+  top: 5px;
+  left: 5px;
+
+  padding-right: 10px;
 }

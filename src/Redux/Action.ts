@@ -8,6 +8,11 @@ export type Products = {
   description: string;
   category: string;
   image: string;
+  rating?: Rating;
+};
+
+type Rating = {
+  rate: number;
 };
 
 //ALL Products

@@ -4,6 +4,7 @@
 @import "./Css/AllProducts.css";
 @import "./Css/SingleProduct.css";
 @import "./Css/Cart.css";
+@import "./Css/AllCart.css";
 
 body,
 html {

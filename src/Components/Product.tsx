@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Products } from "../Redux/Action";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Products, addToCart } from "../Redux/Action";
 import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
+import { InitialState } from "../Redux/Reducer";
 
 export default function Product(props: Products) {
   const { id, image, title, price, category } = props;
+  const cart = useSelector((state: InitialState) => state.cart) as Products[];
+  console.log({ cart });
+  const colour = cart && cart.find((e) => e.id === id);
+  const dispatch = useDispatch();
   return (
     <>
       <div className='product'>
@@ -20,8 +25,9 @@ export default function Product(props: Products) {
           ${price}
           <span className='product_cart'>
             <AddShoppingCartSharpIcon
-              style={{ color: "blue" }}
-              onClick={() => alert(id)}
+              style={{ color: colour ? "red" : "white" }}
+              onClick={() => dispatch(addToCart(props))}
+              fontSize='small'
             />
           </span>
         </p>

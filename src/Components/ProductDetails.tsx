@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { singleproduct } from "../Redux/Action";
+import { singleproduct, Products, addToCart } from "../Redux/Action";
 import { InitialState } from "../Redux/Reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -15,7 +15,12 @@ type Param = {
 
 export default function ProductDetails() {
   const { id } = useParams<Param>();
-  const product = useSelector((state: InitialState) => state.product);
+  const product = useSelector(
+    (state: InitialState) => state.product
+  ) as Products;
+  const cart = useSelector((state: InitialState) => state.cart) as Products[];
+  console.log({ cart });
+  const colour = cart && cart.find((e) => e.id === Number(id));
   console.log(product);
 
   const dispatch = useDispatch();
@@ -30,14 +35,15 @@ export default function ProductDetails() {
           <img className='sproduct_img' src={product?.image} alt='pic' />
           <div className='sproduct_button'>
             <Button
+              onClick={() => dispatch(addToCart(product))}
               variant='contained'
-              color='success'
+              color={colour ? "error" : "warning"}
               startIcon={<AddShoppingCartIcon />}>
               ADD TO CART
             </Button>
             <Button
               variant='contained'
-              color='warning'
+              color='success'
               startIcon={<FlashOnIcon />}>
               BUY NOW
             </Button>
