@@ -3,6 +3,7 @@ import Cart from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { InitialState } from "../Redux/Reducer";
 import { Products } from "../Redux/Action";
+import { Link } from "react-router-dom";
 
 export default function AllCart() {
   const cart = useSelector((state: InitialState) => state.cart) as Products[];
@@ -19,7 +20,9 @@ export default function AllCart() {
         <p> total price: 2400</p>
       </div>
       <div className='allcart_button'>
-        <button className='allcart_btn'>PLACE ORDER</button>
+        <Link to='/secret'>
+          <button className='allcart_btn'>PLACE ORDER</button>
+        </Link>
       </div>
     </>
   );

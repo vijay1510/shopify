@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { singleproduct, Products, addToCart } from "../Redux/Action";
 import { InitialState } from "../Redux/Reducer";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
@@ -39,14 +39,16 @@ export default function ProductDetails() {
               variant='contained'
               color={colour ? "error" : "warning"}
               startIcon={<AddShoppingCartIcon />}>
-              ADD TO CART
+              {colour ? "ADDED TO CART" : "ADD TO CART"}
             </Button>
-            <Button
-              variant='contained'
-              color='success'
-              startIcon={<FlashOnIcon />}>
-              BUY NOW
-            </Button>
+            <Link to='/allcart'>
+              <Button
+                variant='contained'
+                color='success'
+                startIcon={<FlashOnIcon />}>
+                BUY NOW
+              </Button>
+            </Link>
           </div>
         </div>
         <div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { InitialState } from "../Redux/Reducer";
 import { Products } from "../Redux/Action";
 import { Link } from "react-router-dom";
@@ -19,7 +20,9 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 export default function Header() {
+  const auth = getAuth();
   const cart = useSelector((state: InitialState) => state.cart) as Products[];
+  const user = useSelector((state: InitialState) => state.user);
   return (
     <>
       <div className='header'>
@@ -36,8 +39,27 @@ export default function Header() {
             </StyledBadge>
           </IconButton>
         </Link>
-
-        <h4>Login/Signup</h4>
+        {user && (
+          <Link to='/' className='header_login'>
+            <h2
+              onClick={() => {
+                signOut(auth)
+                  .then(() => {
+                    console.log("user signed out");
+                  })
+                  .catch((error: any) => {
+                    console.log("error", error);
+                  });
+              }}>
+              Logout
+            </h2>
+          </Link>
+        )}
+        {!user && (
+          <Link to='/enter/login' className='header_login'>
+            <h2>Login/SignUp</h2>
+          </Link>
+        )}
       </div>
       <div>
         <Category />

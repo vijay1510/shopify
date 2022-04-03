@@ -1,3 +1,4 @@
+import { type } from "os";
 import { Dispatch } from "redux";
 
 //types
@@ -58,6 +59,18 @@ export const addToCart = (data: Partial<Products>) => {
   };
 };
 
+//-----------------------------------------------------------------------
+
+//save user
+export const saveUser = (data: any) => {
+  return {
+    type: "SAVE_USER",
+    payLoad: data,
+  };
+};
+
+//-----------------------------------------------------------------------------------------
+
 //all action types
 
 type ALLPRODUCTS = {
@@ -75,4 +88,9 @@ type ADDTOCART = {
   payLoad: Partial<Products>;
 };
 
-export type AllAction = ALLPRODUCTS | SINGLEPRODUCT | ADDTOCART;
+type SAVEUSER = {
+  type: "SAVE_USER";
+  payLoad: any;
+};
+
+export type AllAction = ALLPRODUCTS | SINGLEPRODUCT | ADDTOCART | SAVEUSER;

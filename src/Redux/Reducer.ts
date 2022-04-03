@@ -6,12 +6,14 @@ export type InitialState = {
   products: Products[] | [];
   product: Products | {};
   cart: Products | any;
+  user: any;
 };
 
 const initialState: InitialState = {
   products: [],
   product: {},
   cart: [],
+  user: "",
 };
 
 export const reducer = (
@@ -49,6 +51,12 @@ export const reducer = (
           cart: state.cart.filter((e: Products) => e.id !== isAvailable.id),
         };
       }
+    }
+    case "SAVE_USER": {
+      return {
+        ...state,
+        user: action.payLoad,
+      };
     }
 
     default:
