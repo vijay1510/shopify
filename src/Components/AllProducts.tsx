@@ -6,6 +6,7 @@ import Product from "./Product";
 
 function AllProducts() {
   const products = useSelector((state: InitialState) => state.products);
+  const filtered = useSelector((state: InitialState) => state.filtered);
 
   const dispatch = useDispatch();
 
@@ -15,10 +16,18 @@ function AllProducts() {
 
   return (
     <>
+      {filtered && (
+        <div className='allproducts'>
+          {filtered.map((item) => {
+            return <Product key={item.id} {...item} />;
+          })}
+        </div>
+      )}
       <div className='allproducts'>
-        {products.map((item) => {
-          return <Product key={item.id} {...item} />;
-        })}
+        {filtered.length === 0 &&
+          products.map((item) => {
+            return <Product key={item.id} {...item} />;
+          })}
       </div>
     </>
   );

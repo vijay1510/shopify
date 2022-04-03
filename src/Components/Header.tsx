@@ -26,43 +26,45 @@ export default function Header() {
   return (
     <>
       <div className='header'>
-        <Link to='/' className='header_link'>
-          <h1 className='header_h1'>Shopify</h1>
-        </Link>
-        <Link to='/allcart'>
-          <IconButton aria-label='cart'>
-            <StyledBadge badgeContent={cart.length} color='error'>
-              <ShoppingCartIcon
-                style={{ color: "whitesmoke" }}
-                fontSize='large'
-              />
-            </StyledBadge>
-          </IconButton>
-        </Link>
-        {user && (
-          <Link to='/' className='header_login'>
-            <h2
-              onClick={() => {
-                signOut(auth)
-                  .then(() => {
-                    console.log("user signed out");
-                  })
-                  .catch((error: any) => {
-                    console.log("error", error);
-                  });
-              }}>
-              Logout
-            </h2>
+        <div className='header_top'>
+          <Link to='/' className='header_link'>
+            <h1 className='header_h1'>Shopify</h1>
           </Link>
-        )}
-        {!user && (
-          <Link to='/enter/login' className='header_login'>
-            <h2>Login/SignUp</h2>
+          <Link to='/allcart'>
+            <IconButton aria-label='cart'>
+              <StyledBadge badgeContent={cart.length} color='error'>
+                <ShoppingCartIcon
+                  style={{ color: "whitesmoke" }}
+                  fontSize='large'
+                />
+              </StyledBadge>
+            </IconButton>
           </Link>
-        )}
-      </div>
-      <div>
-        <Category />
+          {user && (
+            <Link to='/' className='header_login'>
+              <h2
+                onClick={() => {
+                  signOut(auth)
+                    .then(() => {
+                      console.log("user signed out");
+                    })
+                    .catch((error: any) => {
+                      console.log("error", error);
+                    });
+                }}>
+                Logout
+              </h2>
+            </Link>
+          )}
+          {!user && (
+            <Link to='/enter/login' className='header_login'>
+              <h2>Login/SignUp</h2>
+            </Link>
+          )}
+        </div>
+        <div>
+          <Category />
+        </div>
       </div>
     </>
   );

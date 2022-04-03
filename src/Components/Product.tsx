@@ -25,9 +25,9 @@ export default function Product(props: Products) {
           ${price}
           <span className='product_cart'>
             <AddShoppingCartSharpIcon
-              style={{ color: colour ? "red" : "white" }}
+              style={{ color: colour ? "red" : "blue" }}
               onClick={() => dispatch(addToCart(props))}
-              fontSize='small'
+              fontSize='large'
             />
           </span>
         </p>

@@ -6,7 +6,8 @@ export type InitialState = {
   products: Products[] | [];
   product: Products | {};
   cart: Products | any;
-  user: any;
+  user: string | undefined;
+  filtered: Products[] | [];
 };
 
 const initialState: InitialState = {
@@ -14,6 +15,7 @@ const initialState: InitialState = {
   product: {},
   cart: [],
   user: "",
+  filtered: [],
 };
 
 export const reducer = (
@@ -56,6 +58,19 @@ export const reducer = (
       return {
         ...state,
         user: action.payLoad,
+      };
+    }
+    case "FILTER": {
+      const data = action.payLoad as string;
+      const filteredProducts = state.products.filter((e: Products) =>
+        e.category.includes(data)
+      );
+
+      console.log({ filteredProducts });
+      return {
+        ...state,
+        filtered:
+          data === "men" ? filteredProducts.slice(0, 4) : filteredProducts,
       };
     }
 

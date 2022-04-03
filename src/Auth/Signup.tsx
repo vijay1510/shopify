@@ -70,7 +70,7 @@ export default function Signup() {
           type='submit'
           variant='contained'
           sx={{ mt: 3, mb: 2, width: 360 }}>
-          Log In
+          REGISTER
         </Button>
         <Grid container>
           <Grid item sx={{ margin: "0 auto" }}>

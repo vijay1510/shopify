@@ -1,4 +1,4 @@
-.header {
+.header_top {
   height: 65px;
   width: 100%;
   background-color: #3949ab;
@@ -19,4 +19,10 @@
 .header_login {
   text-decoration: none;
   color: aliceblue;
+}
+.header {
+  border: 1px solid black;
+  width: 100%;
+
+  margin-top: 0;
 }

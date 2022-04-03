@@ -62,7 +62,7 @@ export const addToCart = (data: Partial<Products>) => {
 //-----------------------------------------------------------------------
 
 //save user
-export const saveUser = (data: any) => {
+export const saveUser = (data: string | undefined) => {
   return {
     type: "SAVE_USER",
     payLoad: data,
@@ -71,6 +71,15 @@ export const saveUser = (data: any) => {
 
 //-----------------------------------------------------------------------------------------
 
+//filter
+export const getFilter = (data: string) => {
+  return {
+    type: "FILTER",
+    payLoad: data,
+  };
+};
+
+//--------------------------------------------------------------------------------------------------------
 //all action types
 
 type ALLPRODUCTS = {
@@ -90,7 +99,16 @@ type ADDTOCART = {
 
 type SAVEUSER = {
   type: "SAVE_USER";
-  payLoad: any;
+  payLoad: string;
 };
 
-export type AllAction = ALLPRODUCTS | SINGLEPRODUCT | ADDTOCART | SAVEUSER;
+type GETFILTER = {
+  type: "FILTER";
+  payLoad: string | undefined;
+};
+export type AllAction =
+  | ALLPRODUCTS
+  | SINGLEPRODUCT
+  | ADDTOCART
+  | SAVEUSER
+  | GETFILTER;
