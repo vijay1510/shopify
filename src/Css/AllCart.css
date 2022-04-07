@@ -1,5 +1,5 @@
 .allcart {
-  margin-top: 15px;
+  margin-top: 100px;
   margin-left: 5px;
 }
 .allcart_items {
@@ -25,4 +25,5 @@
   color: aliceblue;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }

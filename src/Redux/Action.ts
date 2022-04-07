@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Dispatch } from "redux";
 
 //types
@@ -10,6 +9,7 @@ export type Products = {
   category: string;
   image: string;
   rating?: Rating;
+  amount?: number | any;
 };
 
 type Rating = {
@@ -80,6 +80,19 @@ export const getFilter = (data: string) => {
 };
 
 //--------------------------------------------------------------------------------------------------------
+
+//total price
+
+export const getTotal = (id: number, amt: number) => {
+  return {
+    type: "TOTAL_PRICE",
+    payLoad: id,
+    another: amt,
+  };
+};
+
+//--------------------------------------------------------------------------------------
+
 //all action types
 
 type ALLPRODUCTS = {
@@ -106,9 +119,17 @@ type GETFILTER = {
   type: "FILTER";
   payLoad: string | undefined;
 };
+
+type GETTOTAL = {
+  type: "TOTAL_PRICE";
+  payLoad: number;
+  another: number;
+};
+
 export type AllAction =
   | ALLPRODUCTS
   | SINGLEPRODUCT
   | ADDTOCART
   | SAVEUSER
-  | GETFILTER;
+  | GETFILTER
+  | GETTOTAL;

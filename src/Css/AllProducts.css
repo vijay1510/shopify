@@ -1,9 +1,19 @@
 .allproducts {
+  margin-top: 65px;
+}
+
+.allproducts_items {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   padding-left: 10px;
   max-width: 900px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .allproducts_items {
+    justify-content: space-around;
+  }
 }

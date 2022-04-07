@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { useSelector } from "react-redux";
+import { getAuth, signOut } from "firebase/auth";
 import { InitialState } from "../Redux/Reducer";
 import { Products } from "../Redux/Action";
 import { Link } from "react-router-dom";
-import Category from "./Category";
+
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -34,7 +34,7 @@ export default function Header() {
             <IconButton aria-label='cart'>
               <StyledBadge badgeContent={cart.length} color='error'>
                 <ShoppingCartIcon
-                  style={{ color: "whitesmoke" }}
+                  style={{ color: "whitesmoke", position: "relative", top: 11 }}
                   fontSize='large'
                 />
               </StyledBadge>
@@ -61,9 +61,6 @@ export default function Header() {
               <h2>Login/SignUp</h2>
             </Link>
           )}
-        </div>
-        <div>
-          <Category />
         </div>
       </div>
     </>

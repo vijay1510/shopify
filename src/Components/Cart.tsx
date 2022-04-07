@@ -1,21 +1,25 @@
-import React, { useState } from "react";
-import { Products, addToCart } from "../Redux/Action";
+import React, { useState, useEffect } from "react";
+import { Products } from "../Redux/Action";
+import { getTotal } from "../Redux/Action";
+import { useDispatch, useSelector } from "react-redux";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function Cart(props: Products) {
   const { id, image, title, price } = props;
-  const [val, setVal] = useState(1);
-  const [total, setTotal] = useState(0);
-  console.log({ total });
-  const arr = [] as any;
-  console.log(arr);
+  const [val, setVal] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotal(id, val));
+  }, [dispatch, val, id]);
+
   return (
     <>
       <div className='cart'>
         <div>
           <img src={image} alt='pic' />
           <div>
-            <button onClick={() => (val < 1 ? 1 : setVal(val - 1))}>-</button>
+            <button onClick={() => (val === 0 ? 0 : setVal(val - 1))}>-</button>
             <input value={val} />
             <button onClick={() => setVal(val + 1)}>+</button>
           </div>
@@ -26,7 +30,7 @@ export default function Cart(props: Products) {
           <h4 className='cart_price'>
             ${price} * {val}
             <span className='cart_arrow'>
-              <ArrowForwardIcon fontSize='small' />
+              <ArrowForwardIcon fontSize='large' />
             </span>
             {Math.round(price * val)}
           </h4>

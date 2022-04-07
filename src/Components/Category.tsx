@@ -5,35 +5,17 @@ import { getFilter } from "../Redux/Action";
 
 export default function Category() {
   const filtered = useSelector((state: InitialState) => state.filtered);
+
   const dispatch = useDispatch();
+
   return (
     <>
       <div className='category'>
-        <p
-          onClick={() => dispatch(getFilter("e"))}
-          style={{ color: filtered.length === 20 ? "red" : "black" }}>
-          ALL
-        </p>
-        <p
-          onClick={() => dispatch(getFilter("men"))}
-          style={{ color: filtered.length === 4 ? "red" : "black" }}>
-          Men
-        </p>
-        <p
-          onClick={() => dispatch(getFilter("women"))}
-          style={{ color: filtered.length === 6 ? "red" : "black" }}>
-          Women
-        </p>
-        <p
-          onClick={() => dispatch(getFilter("electronics"))}
-          style={{ color: filtered.length === 6 ? "red" : "black" }}>
-          Electronics
-        </p>
-        <p
-          onClick={() => dispatch(getFilter("jewelery"))}
-          style={{ color: filtered.length === 4 ? "red" : "black" }}>
-          Jewelary
-        </p>
+        <p onClick={(e) => dispatch(getFilter("e"))}>ALL</p>
+        <p onClick={() => dispatch(getFilter("men"))}>Men</p>
+        <p onClick={() => dispatch(getFilter("women"))}>Women</p>
+        <p onClick={() => dispatch(getFilter("electronics"))}>Electronics</p>
+        <p onClick={() => dispatch(getFilter("jewelery"))}>Jewelary</p>
       </div>
     </>
   );

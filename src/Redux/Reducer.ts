@@ -8,6 +8,7 @@ export type InitialState = {
   cart: Products | any;
   user: string | undefined;
   filtered: Products[] | [];
+  amount: any;
 };
 
 const initialState: InitialState = {
@@ -16,6 +17,7 @@ const initialState: InitialState = {
   cart: [],
   user: "",
   filtered: [],
+  amount: [],
 };
 
 export const reducer = (
@@ -37,7 +39,7 @@ export const reducer = (
     }
     case "ADD_TO_CART": {
       const isInCart = action.payLoad;
-      console.log(isInCart);
+      console.log({ isInCart });
       const isAvailable = state.cart.find(
         (e: Products) => e.id === isInCart.id
       );
@@ -46,11 +48,13 @@ export const reducer = (
         return {
           ...state,
           cart: [...state.cart, isInCart],
+          amount: [...state.amount, { ...isInCart, amount: 1 }],
         };
       } else {
         return {
           ...state,
           cart: state.cart.filter((e: Products) => e.id !== isAvailable.id),
+          amount: state.cart.filter((e: Products) => e.id !== isAvailable.id),
         };
       }
     }
@@ -71,6 +75,19 @@ export const reducer = (
         ...state,
         filtered:
           data === "men" ? filteredProducts.slice(0, 4) : filteredProducts,
+      };
+    }
+    case "TOTAL_PRICE": {
+      const id = action.payLoad;
+      const amount = action.another;
+      let newCart = [...state.amount];
+
+      const index = newCart.findIndex((e: Products) => e.id === id);
+      newCart[index] = { ...newCart[index], amount: amount };
+
+      return {
+        ...state,
+        amount: newCart,
       };
     }
 

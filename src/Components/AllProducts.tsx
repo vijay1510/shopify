@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Category from "./Category";
 import { getAllProducts } from "../Redux/Action";
 import { useDispatch, useSelector } from "react-redux";
 import { InitialState } from "../Redux/Reducer";
@@ -16,14 +17,17 @@ function AllProducts() {
 
   return (
     <>
+      <div className='allproducts'>
+        <Category />
+      </div>
       {filtered && (
-        <div className='allproducts'>
+        <div className='allproducts_items'>
           {filtered.map((item) => {
             return <Product key={item.id} {...item} />;
           })}
         </div>
       )}
-      <div className='allproducts'>
+      <div className='allproducts_items'>
         {filtered.length === 0 &&
           products.map((item) => {
             return <Product key={item.id} {...item} />;
