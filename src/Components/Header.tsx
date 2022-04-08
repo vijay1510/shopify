@@ -1,7 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
 import { InitialState } from "../Redux/Reducer";
+import { getFilter } from "../Redux/Action";
 import { Products } from "../Redux/Action";
 import { Link } from "react-router-dom";
 
@@ -23,12 +24,16 @@ export default function Header() {
   const auth = getAuth();
   const cart = useSelector((state: InitialState) => state.cart) as Products[];
   const user = useSelector((state: InitialState) => state.user);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className='header'>
         <div className='header_top'>
           <Link to='/' className='header_link'>
-            <h1 className='header_h1'>Shopify</h1>
+            <h1 onClick={(e) => dispatch(getFilter("e"))} className='header_h1'>
+              Shopify
+            </h1>
           </Link>
           <Link to='/allcart'>
             <IconButton aria-label='cart'>

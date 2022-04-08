@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { InitialState } from "../Redux/Reducer";
+
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import Avatar from "@mui/material/Avatar";
@@ -16,20 +19,19 @@ export default function Login() {
   const [error, setError] = useState("");
   const auth = getAuth();
   const history = useHistory();
+  const cart = useSelector((state: InitialState) => state.cart);
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        //const user = userCredential.user;
+
         history.push("/");
-        console.log("Singed in user: ", user);
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        //const errorMessage = error.message;
         setError(errorCode);
-        console.log(errorCode);
-        console.log("An error occured: ", errorCode, errorMessage);
       });
   };
   return (

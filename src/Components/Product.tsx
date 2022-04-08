@@ -8,7 +8,7 @@ import { InitialState } from "../Redux/Reducer";
 export default function Product(props: Products) {
   const { id, image, title, price, category } = props;
   const cart = useSelector((state: InitialState) => state.cart) as Products[];
-  console.log({ cart });
+
   const colour = cart && cart.find((e) => e.id === id);
   const dispatch = useDispatch();
   return (

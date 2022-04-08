@@ -19,8 +19,8 @@ import "./App.css";
 function App() {
   initializeApp(firebaseConfig);
   const auth = getAuth();
-  const user = useSelector((state: InitialState) => state.user);
-  console.log("user from state", user);
+  //const user = useSelector((state: InitialState) => state.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

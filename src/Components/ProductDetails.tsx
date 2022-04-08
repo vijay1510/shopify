@@ -19,9 +19,8 @@ export default function ProductDetails() {
     (state: InitialState) => state.product
   ) as Products;
   const cart = useSelector((state: InitialState) => state.cart) as Products[];
-  console.log({ cart });
+
   const colour = cart && cart.find((e) => e.id === Number(id));
-  console.log(product);
 
   const dispatch = useDispatch();
 
@@ -41,7 +40,7 @@ export default function ProductDetails() {
               startIcon={<AddShoppingCartIcon />}>
               {colour ? "ADDED TO CART" : "ADD TO CART"}
             </Button>
-            <Link to='/allcart'>
+            <Link to='/allcart' className='sproduct_link'>
               <Button
                 variant='contained'
                 color='success'

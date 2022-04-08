@@ -11,6 +11,11 @@ export default function AllCart() {
     (state: InitialState) => state.amount
   ) as Products[];
 
+  const totalPrice = amount.reduce(
+    (acc: number, val) => Math.round(acc + val.amount * val.price),
+    0
+  );
+
   return (
     <>
       <div className='allcart'>
@@ -21,20 +26,13 @@ export default function AllCart() {
       <hr />
       <div className='allcart_items'>
         <p>total items: {cart.length}</p>
-        <p>
-          {" "}
-          total price:{" "}
-          {cart.length !== 0
-            ? amount.reduce(
-                (acc: number, val) => Math.round(acc + val.amount * val.price),
-                0
-              )
-            : 0}
-        </p>
+        <p>total price: {totalPrice}</p>
       </div>
       <div className='allcart_button'>
         <Link to='/secret'>
-          <button className='allcart_btn'>PLACE ORDER</button>
+          {totalPrice !== 0 && (
+            <button className='allcart_btn'>PLACE ORDER</button>
+          )}
         </Link>
       </div>
     </>

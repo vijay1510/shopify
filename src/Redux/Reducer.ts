@@ -1,4 +1,3 @@
-import Product from "../Components/Product";
 import { Products, AllAction } from "./Action";
 
 //types
@@ -39,11 +38,10 @@ export const reducer = (
     }
     case "ADD_TO_CART": {
       const isInCart = action.payLoad;
-      console.log({ isInCart });
       const isAvailable = state.cart.find(
         (e: Products) => e.id === isInCart.id
       );
-      console.log(isAvailable);
+
       if (isAvailable === undefined) {
         return {
           ...state,
@@ -70,7 +68,6 @@ export const reducer = (
         e.category.includes(data)
       );
 
-      console.log({ filteredProducts });
       return {
         ...state,
         filtered:

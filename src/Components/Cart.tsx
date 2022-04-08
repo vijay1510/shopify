@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Products } from "../Redux/Action";
 import { getTotal } from "../Redux/Action";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function Cart(props: Products) {
   const { id, image, title, price } = props;
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +19,8 @@ export default function Cart(props: Products) {
         <div>
           <img src={image} alt='pic' />
           <div>
-            <button onClick={() => (val === 0 ? 0 : setVal(val - 1))}>-</button>
-            <input value={val} />
+            <button onClick={() => (val < 1 ? 0 : setVal(val - 1))}>-</button>
+            <input value={val} readOnly />
             <button onClick={() => setVal(val + 1)}>+</button>
           </div>
         </div>

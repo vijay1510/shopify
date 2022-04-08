@@ -15,3 +15,7 @@
   justify-content: space-evenly;
   padding: 5px;
 }
+
+.sproduct_link {
+  text-decoration: none;
+}
