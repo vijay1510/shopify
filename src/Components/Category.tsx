@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { InitialState } from "../Redux/Reducer";
+import { useDispatch } from "react-redux";
+
 import { getFilter } from "../Redux/Action";
 
 export default function Category() {
-  const filtered = useSelector((state: InitialState) => state.filtered);
+  // const filtered = useSelector((state: InitialState) => state.filtered);
 
   const dispatch = useDispatch();
 

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { InitialState } from "../Redux/Reducer";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -19,7 +17,6 @@ export default function Login() {
   const [error, setError] = useState("");
   const auth = getAuth();
   const history = useHistory();
-  const cart = useSelector((state: InitialState) => state.cart);
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)

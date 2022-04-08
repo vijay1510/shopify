@@ -9,10 +9,9 @@ import Signup from "./Auth/Signup";
 import Secret from "./Components/Secret";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveUser } from "./Redux/Action";
 import firebaseConfig from "./Config/FirebaseConfig";
-import { InitialState } from "./Redux/Reducer";
 
 import "./App.css";
 

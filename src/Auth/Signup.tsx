@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { InitialState } from "../Redux/Reducer";
+
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import Avatar from "@mui/material/Avatar";
@@ -16,7 +15,6 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
-  const cart = useSelector((state: InitialState) => state.cart);
 
   const auth = getAuth();
   const handleRegister = () => {
