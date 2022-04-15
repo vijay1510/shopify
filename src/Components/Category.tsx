@@ -15,7 +15,7 @@ export default function Category() {
         <p onClick={() => dispatch(getFilter("men"))}>Men</p>
         <p onClick={() => dispatch(getFilter("women"))}>Women</p>
         <p onClick={() => dispatch(getFilter("electronics"))}>Electronics</p>
-        <p onClick={() => dispatch(getFilter("jewelery"))}>Jewelary</p>
+        <p onClick={() => dispatch(getFilter("jewelery"))}>Jewelery</p>
       </div>
     </>
   );
